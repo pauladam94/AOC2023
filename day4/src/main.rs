@@ -73,8 +73,12 @@ fn main() {
         }
         data[i] = (winning_numbers, numbers);
     }
-    // println!("{}", to_string_data(&data));
     let compact_data = data_to_compact_data(&data);
+    println!("first star : {}", first_star(compact_data));
+    println!("second star : {}", second_star(&compact_data));
+}
+
+fn first_star(compact_data: CompactData) -> i32 {
     let mut total_points = 0;
     for game in 0..208 {
         let mut points = 0;
@@ -89,5 +93,29 @@ fn main() {
         }
         total_points += points;
     }
-    println!("first star : {}", total_points);
+    total_points
+}
+
+fn second_star(compact_data: &CompactData) -> usize {
+    let mut numbers_matching_numbers = [0; 208];
+    let mut number_of_cards = [1; 208];
+    for game in 0..208 {
+        let mut points = 0;
+        for n in 0..256 {
+            if compact_data[game].winning_numbers[n] && compact_data[game].numbers[n] {
+                points += 1;
+            }
+        }
+        numbers_matching_numbers[game] = points;
+    }
+    for n_game in 0..208 {
+        for j in (n_game + 1)..(n_game + 1 + numbers_matching_numbers[n_game]) {
+            number_of_cards[j] += number_of_cards[n_game];
+        }
+    }
+    let mut total_points = 0;
+    for i in 0..208 {
+        total_points += number_of_cards[i];
+    }
+    total_points
 }
