@@ -1,7 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
 const NOT_SYMBOL: [char; 11] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
-const NUMBER: [char; 10] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 type Data = [[char; 140]; 140];
 
 fn number_adjacent_symbol(i: usize, j: usize, max_i: usize, max_j: usize, data: &Data) -> usize {
@@ -76,7 +75,6 @@ fn main() {
             data[i][j] = char;
         }
     }
-
     first_star(&data);
     second_star(&data);
 }

@@ -16,12 +16,8 @@ fn main() -> std::io::Result<()> {
     for line in contents.lines() {
         let mut first_digit = None;
         let mut second_digit = 0;
-        // let line_clone = line.clone();
         for (j, s) in line.chars().enumerate() {
             let s = s.to_string();
-            // println!("{s}");
-
-            
             for i in 1..numbers.len() {
                 if line[j..].starts_with(numbers[i]) {
                     if first_digit.is_none() {
@@ -48,8 +44,7 @@ fn main() -> std::io::Result<()> {
         println!("{}", 10 * first_digit.unwrap() + second_digit);
         sum += 10 * first_digit.unwrap() + second_digit;
     }
-
-    println!("{sum}");
-
+    println!("first star : didn't keep the code");
+    println!("second star : {sum}");
     Ok(())
 }

@@ -116,9 +116,8 @@ impl std::fmt::Display for Color {
 fn main() {
     let mut games: Games = vec![];
     let input = std::fs::read_to_string("input.txt").unwrap();
-    for (i, line) in input.lines().enumerate() {
+    for line in input.lines() {
         let mut game: Game = vec![];
-        let n_game = i + 1;
         line.to_string();
         // println!("{} | line : \n{}", n_game, line);
         let line = line.split(":").collect::<Vec<&str>>();
@@ -147,6 +146,9 @@ fn main() {
         games.push(game);
     }
     // On somme tous les élements du vec possible_games_number(&games)
-    // println!("{}", possible_games_number(&games).iter().sum::<usize>());
-    println!("{}", power_set_games(&games));
+    println!(
+        "fist star : {}",
+        possible_games_number(&games).iter().sum::<usize>()
+    );
+    println!("second star : {}", power_set_games(&games));
 }
