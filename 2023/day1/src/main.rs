@@ -7,7 +7,7 @@ fn main() -> std::io::Result<()> {
     let numbers = vec![
         "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
     ];
-    let file = File::open("input.txt")?;
+    let file = File::open("./input.txt")?;
     let mut buf_reader = BufReader::new(file);
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents)?;
@@ -40,8 +40,8 @@ fn main() -> std::io::Result<()> {
                 }
             }
         }
-        println!("{line}");
-        println!("{}", 10 * first_digit.unwrap() + second_digit);
+        // println!("{line}");
+        // println!("{}", 10 * first_digit.unwrap() + second_digit);
         sum += 10 * first_digit.unwrap() + second_digit;
     }
     println!("first star : didn't keep the code");
